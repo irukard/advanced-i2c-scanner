@@ -34,7 +34,7 @@ void displayMatch(uint8_t addr)
   if ((addr >= 0x76) && (addr <= 0x77))  Serial.println("Bosch BME680 - Temp/Pressure/Humidity/VOC Sensor");
   if (addr == 0x77)                      Serial.println("Bosch BMP085 - Temp/Pressure Sensor");
   if (addr == 0x77)                      Serial.println("Bosch BMP180 - Temp/Pressure Sensor");
-  if ((addr >= 0x76) && (addr <= 0x77))  Serial.println("Bosch BMP280 - Temp/Pressure Sensor");
+  if ((addr >= 0x76) && (addr <= 0x77))  Serial.println("Bosch BMP280/BMP380/BMP338 - Temp/Pressure Sensor");
   if ((addr >= 0x20) && (addr <= 0x27))  Serial.println("PCF8574 - 8-bit I/O Expander");
   if ((addr >= 0x38) && (addr <= 0x3F))  Serial.println("PCF8574A - 8-bit I/O Expander");
   if (addr == 0x27)                      Serial.println("PCF8574 - LCD with I2C Converter");
@@ -44,7 +44,7 @@ void displayMatch(uint8_t addr)
   if ((addr >= 0x5a) && (addr <= 0x5b))  Serial.println("ams CCS811 - VOC/eCO2 Sensor");
   if (addr == 0x68)                      Serial.println("Maxim DS1307 - Real-Time Clock");
   if (addr == 0x68)                      Serial.println("Maxim DS3231 - Real-Time Clock");
-  if (addr == 0x50)                      Serial.println("Microchip 24C32 - Serial EEPROM");
+  if ((addr >= 0x50) && (addr <= 0x57))  Serial.println("Microchip 24C32 - Serial EEPROM");
   if ((addr >= 0x70) && (addr <= 0x77))  Serial.println("Holtek HT16K33 - LED Matrix Driver");
   if (addr == 0x40)                      Serial.println("TE Conectivity HTU21D-F - Temp/Humidity Sensor");
   if ((addr >= 0x19) && (addr <= 0x1e))  Serial.println("ST LSM303AGR - 3-axis Accelerometer/Magnetometer");
@@ -62,19 +62,23 @@ void displayMatch(uint8_t addr)
   if (addr == 0x49)                      Serial.println("ams AS7262 - 6-channel Visible Spectral ID");
   if (addr == 0x38)                      Serial.println("Bosch BMA150 - 3-axis Accelerometer");
   if (addr == 0x77)                      Serial.println("Bosch BMA180 - 3-axis Accelerometer");
+  if ((addr >= 0x68) && (addr <= 0x69))  Serial.println("IvenSense ITG3200 - 3-axis Gyro");
+  if ((addr >= 0x20) && (addr <= 0x21))  Serial.println("Microchip MCP23017 - 16-bit I/O Expander");
+  if ((addr >= 0x38) && (addr <= 0x39))  Serial.println("Vishay VEML6070 - UVA Light Sensor");
+  if ((addr >= 0x68) && (addr <= 0x69))  Serial.println("IvenSense MPU-6050 - 6-DoF Gyro/Accelerometer");
+  if ((addr >= 0x68) && (addr <= 0x69))  Serial.println("IvenSense MPU-9250 - 9-DoF Gyro/Accelerometer/Magnetometer");
+  if ((addr >= 0x40) && (addr <= 0x7f))  Serial.println("PCA9685 - 16-channel 12-bit PWM generator");
+  
 
   // Needs verification. Data copied from https://i2cdevices.org/devices
 
-  // if ((addr >= 0x68) && (addr <= 0x69)) Serial.println("ITG3200 - Gyro");
+  
   // if ((addr >= 0x20) && (addr <= 0x21)) Serial.println("MCP23008 - 8-Bit I/O Expander with Serial Interface I2C GPIO expander");
-  // if ((addr >= 0x20) && (addr <= 0x21)) Serial.println("MCP23017 - I2C GPIO expander");
   // if (addr == 0x13) Serial.println("VCNL40x0 - proximity sensor");
-  // if ((addr >= 0x38) && (addr <= 0x39)) Serial.println("VEML6070 - UVA Light Sensor with I2C Interface");
   // if (addr == 0x10) Serial.println("VEML7700 - High Accuracy Ambient Light Sensor ");
   // if (addr == 0x29) Serial.println("VL53L0x - Time Of Flight distance sensor");
   // if (addr == 0x29) Serial.println("VL6180X - Time Of Flight distance sensor");
   // if (addr == 0x10) Serial.println("VML6075 - UVA and UVB Light Sensor with I2C Interface");
-
   // if ((addr >= 0x28) && (addr <= 0x29)) Serial.println("BNO055 - Absolute Orientation Sensor");
   // if ((addr >= 0x28) && (addr <= 0x2d)) Serial.println("CAP1188 - 8-channel Capacitive Touch");
   // if ((addr >= 0x2c) && (addr <= 0x2d)) Serial.println("CAT5171 - 256‐position I2C Compatible Digital Potentiometer ");
@@ -107,14 +111,11 @@ void displayMatch(uint8_t addr)
   // if (addr == 0x60) Serial.println("MPL115A2 - Miniature I2C digital barometer, 50 to 115 kPa");
   // if (addr == 0x60) Serial.println("MPL3115A2 - Barometric Pressure");
   // if ((addr >= 0x5c) && (addr <= 0x5d)) Serial.println("MPR121 - 12-point capacitive touch sensor");
-  // if ((addr >= 0x68) && (addr <= 0x69)) Serial.println("MPU6050 - Six-Axis (Gyro + Accelerometer) MEMS MotionTracking™ Devices");
-  // if ((addr >= 0x68) && (addr <= 0x69)) Serial.println("MPU-9250 - 9-DoF IMU Gyroscope, Accelerometer and Magnetometer");
   // if ((addr >= 0x76) && (addr <= 0x77)) Serial.println("MS5607 - Barometric Pressure");
   // if ((addr >= 0x76) && (addr <= 0x77)) Serial.println("MS5611 - Barometric Pressure");
   // if ((addr >= 0x41) && (addr <= 0x40)) Serial.println("NE5751 - Audio processor for IV communication");
   // if (addr == 0x52) Serial.println("Nunchuck controller - Nintendo");
   // if (addr == 0x22) Serial.println("PCA1070 - Multistandard programmable analog CMOS speech transmission IC");
-  // if ((addr >= 0x42) && (addr <= 0x5f)) Serial.println("PCA9685 - 16-channel PWM driver default address");
   // if ((addr >= 0x25) && (addr <= 0x24)) Serial.println("PCD3311C - DTMF/modem/musical tone generator");
   // if ((addr >= 0x25) && (addr <= 0x24)) Serial.println("PCD3312C - DTMF/modem/musical-tone generator");
   // if (addr == 0x68) Serial.println("PCF8523 - RTC");
@@ -197,15 +198,8 @@ void displayResults()
   char textbuffer[128];
   char tmpstr[128];
 
-  strcpy(textbuffer, "   ");
-
-  for (int i = 0; i < 0x10; i++)
-  {
-    sprintf(tmpstr, " %2x", i);
-    strcat(textbuffer, tmpstr);
-  }
   //Serial.print("\033[43m\033[30m");
-  Serial.println(textbuffer);
+  Serial.println("     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f");
   //Serial.print("\033[49m\033[39m");
 
   textbuffer[0] = 0; // Clear the buffer
@@ -217,7 +211,8 @@ void displayResults()
   {
     if (!(addr % 0x10)) // Start of a line
     {
-      sprintf(textbuffer, "%02x:", addr / 0x10);
+      sprintf(textbuffer, "%02x:", addr);
+      //Serial.print(addr, HEX);
     }
 
     if (addr < SCAN_ADDRESS_START || addr > SCAN_ADDRESS_END)
