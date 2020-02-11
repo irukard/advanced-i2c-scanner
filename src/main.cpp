@@ -68,6 +68,7 @@ void displayMatch(uint8_t addr)
   if ((addr >= 0x68) && (addr <= 0x69))  Serial.println("IvenSense MPU-6050 - 6-DoF Gyro/Accelerometer");
   if ((addr >= 0x68) && (addr <= 0x69))  Serial.println("IvenSense MPU-9250 - 9-DoF Gyro/Accelerometer/Magnetometer");
   if ((addr >= 0x40) && (addr <= 0x7f))  Serial.println("PCA9685 - 16-channel 12-bit PWM generator");
+  if (addr == 0x69)                      Serial.println("Sensirion SPS30 - PM Sensor");
   
 
   // Needs verification. Data copied from https://i2cdevices.org/devices
@@ -140,7 +141,6 @@ void displayMatch(uint8_t addr)
   // if ((addr >= 0x11) && (addr <= 0x63)) Serial.println("Si4713 - FM Radio Transmitter with Receive Power Scan");
   // if ((addr >= 0x61) && (addr <= 0x60)) Serial.println("Si5351A - Clock Generator");
   // if (addr == 0x40) Serial.println("Si7021 - Humidity/Temp sensor");
-  // if (addr == 0x69) Serial.println("SPS30 - Particulate Matter Sensor for Air Quality Monitoring and Control");
   // if ((addr >= 0x3d) && (addr <= 0x3c)) Serial.println("SSD1305 - 132 x 64 Dot Matrix OLED/PLED Segment/Common Driver with Controller");
   // if ((addr >= 0x3d) && (addr <= 0x3c)) Serial.println("SSD1306 - 128 x 64 Dot Matrix Monochrome OLED/PLED Segment/Common Driver with Controller ");
   // if ((addr >= 0x41) && (addr <= 0x44)) Serial.println("STMPE610 - Resistive Touch controller");
@@ -217,7 +217,7 @@ void displayResults()
 
     if (addr < SCAN_ADDRESS_START || addr > SCAN_ADDRESS_END)
     {
-      sprintf(tmpstr, " %02s", "  ");
+      sprintf(tmpstr, " %s", "  ");
     }
     else if (deviceStatus[addr] == 0)
     {
@@ -225,11 +225,11 @@ void displayResults()
     }
     else if (deviceStatus[addr] == 4)
     {
-      sprintf(tmpstr, " %02s", "??");
+      sprintf(tmpstr, " %s", "??");
     }
     else
     {
-      sprintf(tmpstr, " %02s", "--");
+      sprintf(tmpstr, " %s", "--");
     }
 
     strcat(textbuffer, tmpstr);
