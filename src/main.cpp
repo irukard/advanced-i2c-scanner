@@ -41,6 +41,7 @@ void displayMatch(uint8_t addr)
   if (addr == 0x3f)                      Serial.println("PCF8574A - LCD with I2C Converter");
   if ((addr >= 0x44) && (addr <= 0x45))  Serial.println("Sensirion SHT30/SHT31/SHT35 - Temp/Humidity Sensor");
   if (addr == 0x44)                      Serial.println("Nettigo HECA - Heating Element Control Assembly");
+  if (addr == 0x32)                      Serial.println("Nettigo NAM I2C RGB LED Bar");
   if ((addr >= 0x5a) && (addr <= 0x5b))  Serial.println("ams CCS811 - VOC/eCO2 Sensor");
   if (addr == 0x68)                      Serial.println("Maxim DS1307 - Real-Time Clock");
   if (addr == 0x68)                      Serial.println("Maxim DS3231 - Real-Time Clock");
@@ -69,6 +70,7 @@ void displayMatch(uint8_t addr)
   if ((addr >= 0x68) && (addr <= 0x69))  Serial.println("IvenSense MPU-9250 - 9-DoF Gyro/Accelerometer/Magnetometer");
   if ((addr >= 0x40) && (addr <= 0x7f))  Serial.println("PCA9685 - 16-channel 12-bit PWM generator");
   if (addr == 0x69)                      Serial.println("Sensirion SPS30 - PM Sensor");
+  
   
 
   // Needs verification. Data copied from https://i2cdevices.org/devices
